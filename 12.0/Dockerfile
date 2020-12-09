@@ -83,7 +83,7 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 RUN apt-get update \
         && apt-get install -y --no-install-recommends \
             libpcap-dev \
-            libpq-dev=12.3-1.pgdg90+1 \
+            libpq-dev \
             build-essential \
             python3-dev \
             python3-pandas \

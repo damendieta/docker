@@ -114,6 +114,8 @@ RUN pip3 install \
         py3o.formats \
         netifaces \
         wdb \
+        shapely \
+        geojson \
         ftpretty
 
 RUN python3 -m pip install redis

@@ -1,4 +1,4 @@
-FROM fslibre/odoo:9.0.1
+FROM fslibre/odoo:9.0.4
 MAINTAINER Fabrica de Software Libre
 
 USER root

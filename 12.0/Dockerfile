@@ -83,7 +83,8 @@ RUN apt-get update \
             default-jre \
             libreoffice-writer \
             libreoffice-calc \
-            git
+            git \
+            nano
 
 RUN pip3 install wheel
 

@@ -19,7 +19,7 @@ RUN apt-get update \
             gnupg \
             libssl-dev \
             node-less \
-	    npm \
+            npm \
             python3-num2words \
             python3-pip \
             python3-phonenumbers \
@@ -74,8 +74,8 @@ RUN apt-get update \
         && apt-get install -y --no-install-recommends \
             libpcap-dev \
             libpq-dev \
-	    libffi-dev \
-	    cargo \
+            libffi-dev \
+            cargo \
             build-essential \
             python3-dev \
             python3-pandas \
@@ -84,6 +84,8 @@ RUN apt-get update \
             libreoffice-writer \
             libreoffice-calc \
             git
+
+RUN pip3 install wheel
 
 RUN pip3 install \
         pyotp \
@@ -108,7 +110,10 @@ RUN pip3 install \
         wdb \
         shapely \
         geojson \
-        ftpretty
+        ftpretty \
+        jsonrpcclient \
+        humanize \
+        lameenc
 
 RUN python3 -m pip install redis
 RUN python3 -m pip install paramiko
@@ -153,10 +158,13 @@ RUN python3 -m pip install --upgrade \
         suds-jurko==0.6 \
         vatnumber==1.2 \
         vobject==0.9.3 \
-	Werkzeug==0.11.15 \
+        Werkzeug==0.11.15 \
         XlsxWriter==0.9.3 \
         xlwt==1.3.* \
         xlrd==1.0.0
+
+RUN apt-get clean
+RUN apt-get purge -y build-essential python3-dev && apt-get -y autoremove && apt-get clean
 
 # Set user id and guid as 1500
 RUN usermod -u 1500 odoo

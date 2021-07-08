@@ -183,7 +183,7 @@ RUN chown odoo /etc/odoo/odoo.conf \
 RUN mkdir -p /mnt/core-addons \
     && chown -R odoo /mnt/core-addons
 
-RUN mv -r /usr/lib/python3/dist-packages/odoo/addons /mnt/core-addons
+RUN mv /usr/lib/python3/dist-packages/odoo/addons /mnt/core-addons
 
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons", "/mnt/core-addons", "/etc/odoo", "/usr/lib/python3/dist-packages/odoo"]
 

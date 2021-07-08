@@ -177,13 +177,10 @@ COPY ./odoo.conf /etc/odoo/
 
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
 RUN chown odoo /etc/odoo/odoo.conf \
-    && mkdir -p /mnt/extra-addons \
-    && chown -R odoo /mnt/extra-addons
+    && mkdir -p /mnt/extra-addons
 
-RUN mkdir -p /mnt/core-addons \
-    && chown -R odoo /mnt/core-addons
-
-RUN mv /usr/lib/python3/dist-packages/odoo/addons /mnt/core-addons
+RUN mv /usr/lib/python3/dist-packages/odoo/addons /mnt/
+RUN chown -R odoo /mnt
 
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons", "/mnt/core-addons", "/etc/odoo", "/usr/lib/python3/dist-packages/odoo"]
 

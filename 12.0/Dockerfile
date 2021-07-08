@@ -180,9 +180,10 @@ RUN chown odoo /etc/odoo/odoo.conf \
     && mkdir -p /mnt/extra-addons
 
 RUN mv /usr/lib/python3/dist-packages/odoo/addons /mnt/
+
 RUN chown -R odoo /mnt
 
-VOLUME ["/var/lib/odoo", "/mnt/extra-addons", "/mnt/core-addons", "/etc/odoo", "/usr/lib/python3/dist-packages/odoo"]
+VOLUME ["/var/lib/odoo", "/mnt/extra-addons", "/mnt/addons", "/etc/odoo", "/usr/lib/python3/dist-packages/odoo"]
 
 # Expose Odoo services
 EXPOSE 8069 8071 8072

@@ -179,7 +179,13 @@ COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf \
     && mkdir -p /mnt/extra-addons \
     && chown -R odoo /mnt/extra-addons
-VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
+
+RUN mkdir -p /mnt/core-addons \
+    && chown -R odoo /mnt/core-addons
+
+RUN mv -r /usr/lib/python3/dist-packages/odoo/addons /mnt/core-addons
+
+VOLUME ["/var/lib/odoo", "/mnt/extra-addons", "/mnt/core-addons", "/etc/odoo", "/usr/lib/python3/dist-packages/odoo"]
 
 # Expose Odoo services
 EXPOSE 8069 8071 8072
